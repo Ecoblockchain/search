@@ -7,7 +7,7 @@
     </div>
     <div class="container">
       <div class="listview">
-        <filter :term.sync="term" :facets="facets"></filter>
+        <filter :term.sync="term" :facets="facets" :state="filterState"></filter>
         <div class="results">
           <result v-for="result in filtered" :thing="result"></result>
         </div>

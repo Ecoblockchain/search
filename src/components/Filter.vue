@@ -13,7 +13,7 @@
     <div class="facet">
       <h4>Gebied</h4>
       <div id="map" style="height:200px"></div>
-      <a href="#" v-if="$root.filterState.area" @click.prevent="$root.filterState.area=null">Alle gebieden</a>
+      <a href="#" v-if="state.area" @click.prevent="clearArea">Alle gebieden</a>
     </div>
   </div>
 </template>
@@ -26,8 +26,10 @@ import Facet from './Facet.vue'
 import L from 'leaflet'
 import draw from 'leaflet-draw'
 
+var map, extentLayer, markers
+
 export default {
-  props: ['term', 'facets'],
+  props: ['term', 'facets', 'state'],
   data () {
     return {
       show: {
@@ -35,11 +37,17 @@ export default {
       }
     }
   },
+  methods: {
+    clearArea () {
+      this.state.area = null
+      map.removeLayer(extentLayer)
+      extentLayer = null
+    }
+  },
   attached () {
     var self = this
-    var map = L.map('map').setView([50.6, 4.6], 6);
-    var markers = new L.FeatureGroup();
-    var extentLayer
+    map = L.map('map').setView([50.6, 4.6], 6);
+
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: ''
@@ -60,7 +68,9 @@ export default {
     this.$el.querySelector('.leaflet-draw-draw-rectangle').addEventListener('click', function(e) {
       self.$el.classList.add('map-expanded');
       L.Util.requestAnimFrame(map.invalidateSize, map, false, map._container);
-      setTimeout(() => map.fitBounds(markers.getBounds()), 100)
+      if (!extentLayer) {
+        setTimeout(() => map.fitBounds(markers.getBounds()), 100)
+      }
     });
     this.$el.querySelector('.leaflet-draw-draw-rectangle').addEventListener('dblclick', function(e) {
       e.stopPropagation()
@@ -79,10 +89,11 @@ export default {
 
       // Reset map
       self.$el.classList.remove('map-expanded');
-      setTimeout(() => map.fitBounds(extentLayer.getBounds()), 300)
       L.Util.requestAnimFrame(map.invalidateSize, map, false, map._container);
+      setTimeout(() => map.fitBounds(extentLayer.getBounds()), 300)
     });
 
+    markers = new L.FeatureGroup();
     for (var i = 0; i < this.$parent.features.length; i++) {
       var a = this.$parent.features[i];
       var geo = a['dcterms:spatial']

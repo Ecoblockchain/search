@@ -90,12 +90,16 @@ nav {
 	position: relative;
 	-webkit-user-select: none;
 	user-select: none;
+	cursor: pointer;
 	&.active::before {
 		content: '\2713';
 		position: absolute;
 		left: -1rem;
 		text-align: center;
 		width: 1rem;
+	}
+	&:hover {
+		text-decoration: underline;
 	}
 }
 :focus {
