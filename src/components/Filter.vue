@@ -10,7 +10,11 @@
       <input type="date" class="inp inp-daterange">
     </div>
     <facet v-for="facet in facets" :facet="facet"></facet>
-    <div id="map" style="height:200px"></div>
+    <div class="facet">
+      <h4>Gebied</h4>
+      <div id="map" style="height:200px"></div>
+      <a href="#" v-if="$root.filterState.area" @click.prevent="$root.filterState.area=null">Alle gebieden</a>
+    </div>
   </div>
 </template>
 
@@ -34,6 +38,7 @@ export default {
   attached () {
     var self = this
     var map = L.map('map').setView([50.6, 4.6], 6);
+    var markers = new L.FeatureGroup();
     var extentLayer
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -55,6 +60,11 @@ export default {
     this.$el.querySelector('.leaflet-draw-draw-rectangle').addEventListener('click', function(e) {
       self.$el.classList.add('map-expanded');
       L.Util.requestAnimFrame(map.invalidateSize, map, false, map._container);
+      setTimeout(() => map.fitBounds(markers.getBounds()), 100)
+    });
+    this.$el.querySelector('.leaflet-draw-draw-rectangle').addEventListener('dblclick', function(e) {
+      e.stopPropagation()
+      return false
     });
 
     // When user finishes drawing the box, record it and add it to the map
@@ -64,14 +74,26 @@ export default {
       }
       extentLayer = e.layer;
       map.addLayer(extentLayer);
-      // $('.apply', buttons).removeClass('disabled').addClass('btn-primary');
       var spatial = extentLayer.getBounds().toBBoxString()
-      self.$dispatch('set', 'spatial', spatial)
+      self.$dispatch('set', 'area', spatial)
 
       // Reset map
       self.$el.classList.remove('map-expanded');
+      setTimeout(() => map.fitBounds(extentLayer.getBounds()), 300)
       L.Util.requestAnimFrame(map.invalidateSize, map, false, map._container);
     });
+
+    for (var i = 0; i < this.$parent.features.length; i++) {
+      var a = this.$parent.features[i];
+      var geo = a['dcterms:spatial']
+      var circle = new L.CircleMarker([geo.lat, geo.lng], 10, {
+          color: 'blue',
+          fillColor: '#bbf',
+          fillOpacity: 0.5
+      }).addTo(markers);
+    }
+
+    map.addLayer(markers);
   },
   components: {
     Facet
