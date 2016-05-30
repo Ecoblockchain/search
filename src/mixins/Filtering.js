@@ -4,7 +4,8 @@ export default {
 			filterState: window.filterState || {
 				area: null,
 				type: null,
-				category: null
+				temporal: null,
+				bbc: null
 			}
 		}
 	}

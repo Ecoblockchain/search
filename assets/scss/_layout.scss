@@ -67,12 +67,12 @@ nav {
 	padding-bottom: 2em;
 }
 .filter {
-	flex: 0 0 15rem;
+	flex: 1 0 15rem;
 	padding: 0 1rem 0 2rem;
 	font-size: 14px;
 }
 .results {
-	flex: 1 1 20rem;
+	flex: 10 1 20rem;
 }
 
 @media (min-width: 50em) {

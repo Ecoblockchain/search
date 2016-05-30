@@ -7,7 +7,7 @@
     <div class="facet-options" v-else>
       <div class="facet-option" :class="{active:facet.value==opt.key}" v-for="opt in facet.options" @click="choose(opt.key)">{{ opt.value || opt.key}}</div>
     </div>
-    <a v-if="facet.prop=='temporal'" href="#" @click.prevent>
+    <a v-if="facet.prop=='temporal'" href="#" @click.prevent style="display:none">
       Aangepaste periode...
     </a>
   </div>

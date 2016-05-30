@@ -49,14 +49,13 @@ export default {
       // Type filter
       .filter(function(item) {
         var value = item['@type']
-        if (!state.type) return true
-        return (value || false) && value === state.type
+        return (value || false) && value === (state.type || 'lbld:Decision')
       })
       // Category filter
       .filter(function(item) {
-        var value = item['schema:category'] || item['dcterms:subject']
-        if (!state.category) return true
-        return (value || false) && value === state.category
+        var value = item['schema:category'] || item['lbld:bbcCode']
+        if (!state.bbc) return true
+        return (value || false) && value === state.bbc
       })
       // Search term filter
       .filter(function(item) {
