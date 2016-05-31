@@ -23,7 +23,7 @@ export default {
         case 'schema:Person': return 'Persoon'
         case 'lbld:Zitting': return 'Thing'
         case 'lbld:Fractie': return 'Fractie'
-        case 'lbld:Mandaat': return 'Mandaat'
+        case 'mandaat:Mandaat': return 'Mandaat'
         case 'lbld:Mandaat': return 'Mandaat'
       }
       return 'Thing'

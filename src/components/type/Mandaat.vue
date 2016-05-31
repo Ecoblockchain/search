@@ -1,15 +1,9 @@
 <template>
 	<article>
 		<header>
-			<h1 class="thing-name">{{name}}</h1>
-			<p class="thing-type">{{type}}</p>
+			<h1 class="thing-name">{{a(thing['mandaat:person'])['schema:name']}}</h1>
+			<p class="thing-type">{{thing['mandaat:position']}} {{start}} {{end}}</p>
 		</header>
-		<main>
-			<p class="thing-description" v-if="description">{{description}}</p>
-			<p v-for="(prop, value) in thing" v-if="check(prop)">
-				<u>{{prop}}</u>: {{value|json}}
-			</p>
-		</main>
 	</article>
 </template>
 
@@ -17,6 +11,20 @@
 import _common from './_common.js'
 
 export default {
+	computed: {
+		start () {
+			if (!this.thing || !this.thing['schema:startDate']) {
+				return
+			}
+			return 'vanaf ' + this.thing['schema:startDate']['@value']
+		},
+		end () {
+			if (!this.thing || !this.thing['schema:endDate']) {
+				return
+			}
+			return 'tot ' + this.thing['schema:endDate']['@value']
+		}
+	},
 	methods: {
 		check (prop) {
 			return prop[0] !== '@' && prop !== 'schema:name' && prop !== 'schema:description' && prop !== 'dcterms:title'

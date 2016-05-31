@@ -4,16 +4,16 @@ var facets = [{
   prop: 'type',
   options: [{
     key: null,
-    value: 'Besluit'
+    value: 'Besluiten'
   }, {
     key: 'lbld:Article',
-    value: 'Artikel'
+    value: 'Artikels'
   }, {
     key: 'lbld:Orgaan',
-    value: 'Orgaan'
+    value: 'Organen'
   }, {
-    key: 'mandaat:Voordracht',
-    value: 'Voordracht'
+    key: 'mandaat:Mandaat',
+    value: 'Mandaten'
   }]
 }, {
   title: 'Periode',
@@ -242,7 +242,7 @@ var results = [{
   }
 }, {
   type: 'lbld:Orgaan',
-  id: '_:orgaan-gemeenteraad-kortrijk',
+  "@id": '_:orgaan-gemeenteraad-kortrijk',
   text: 'Gemeenteraad Kortrijk',
   'lbld:type': {
     '@id': '_:orgaan-gemeenteraad'
@@ -277,6 +277,153 @@ var results = [{
   'lbld:type': {
     '@id': '_:orgaan-districtsraad'
   }
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:pieter',
+  'schema:name': 'Pieter Colpaert'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:katrien',
+  'schema:name': 'Katrien De Smet'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:peter',
+  'schema:name': 'Peter Mechant'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:heidi',
+  'schema:name': 'Heidi Godderis'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:raf',
+  'schema:name': 'Raf Buyle'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:liesbeth',
+  'schema:name': 'Liesbeth De Clercq'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:geert',
+  'schema:name': 'Geert Van Campenhout'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:carolien',
+  'schema:name': 'Carolien Willen'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:katie',
+  'schema:name': 'Katie Heyse'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:thomas',
+  'schema:name': 'Thomas Ghysels'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:joep',
+  'schema:name': 'Joep Luijten'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:veronique',
+  'schema:name': 'Veronique Volders'
+}, {
+  '@type': 'schema:Person',
+  "@id": '_:mathias',
+  'schema:name': 'Mathias Van Compernolle'
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:peter'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:pieter'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:katie'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  },
+  'schema:endDate': {
+    '@type': 'xsd:date',
+    '@value': '2016-06-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:raf'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:carolien'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@id': '_:m1',
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:mathias'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:veronique'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:joep'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
+}, {
+  '@type': 'mandaat:Mandaat',
+  'mandaat:position': 'gemeenteraadslid',
+  'mandaat:person': {
+    '@id': '_:thomas'
+  },
+  'schema:startDate': {
+    '@type': 'xsd:date',
+    '@value': '2012-11-15'
+  }
 }]
 
 // Generate missing ids
@@ -309,5 +456,15 @@ export default {
     features () {
       return this.results.filter(r => r['dcterms:spatial'])
     }
+  },
+  ready () {
+    // http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld
+    this.$http.get('http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld')
+    .then(function ({data}) {
+      if (!data || !data['@graph']) {
+        return console.warn('The datatank did not return a graph')
+      }
+      console.log(data['@graph'].length)
+    })
   }
 }
