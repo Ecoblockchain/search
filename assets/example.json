@@ -68,32 +68,6 @@
     "@id": "_:1976-10-11-ministrieelbesluit",
     "dcterms:title": "het ministrieel besluit van 11 oktober 1976"
   }, {
-    "@type": "lbld:Decision",
-    "@id": "_:2014_GR_00163",
-    "lbld:bbcCode": "BV01",
-    "dcterms:title": "Eedaflegging en installatie gemeenteraadslid",
-    "schema:author": "Petra Verhenne",
-    "schema:description": "Op 15 juni 2014 liet de heer Bart Caron weten dat hij ontslag neemt als gemeenteraadslid. In vervanging van de heer Bart Caron dient een opvolger geïnstalleerd te worden. De heer Mattias Vandemaele, eerste opvolger op de lijst Groen, is bereid het mandaat van gemeenteraadslid op te nemen in opvolging van de heer Bart Caron.",
-    "lbld:context": "Op 15 juni 2014 liet de heer Bart Caron weten dat hij ontslag neemt als gemeenteraadslid. De gemeenteraad nam daarvan akte in huidige zitting",
-    "lbld:legalBackground": [{
-      "@id": "_:1968-03-16-politiewet"
-    }, {
-      "@id": "_:2005-07-15-gemeentedecreet"
-    }, {
-      "@id": "_:1988-06-24-gemeentewet"
-    }, {
-      "@id": "_:1976-10-11-ministrieelbesluit"
-    }],
-    "lbld:article": [{
-      "@id": "_:artikel-1"
-    }, {
-      "@id": "_:artikel-2"
-    }, {
-      "@id": "_:artikel-3"
-    }, {
-      "@id": "_:artikel-4"
-    }]
-  }, {
     "@type": "lbld:Article",
     "@id": "_:artikel-2",
     "dcterms:title": "Artikel 2. inzake voorrangsregelingen",
@@ -138,179 +112,98 @@
     "schema:description": "Overwegende het LBLOD-onderzoek wordt een vervolgtraject gepland.",
     "dcterms:spatial": { "lat": 51.0369, "lng": 3.708 }
   }, {
-    "@type": "lbld:Article",
-    "@id": "_:artikel-mandaat",
-    "dcterms:title": "Artikel 3. mandaat aanstelling",
-    "lbld:creates": { "@id": "_:mandaat/12" }
-  }, {
-    "@type": "mandaat:Voordracht",
-    "@id": "_:voordracht-1",
-    "dcterms:title": "Voordrachtakte",
-    "mandaat:exit": {
-      "@type": "mandaat:Mandaat",
-      "schema:person": { "@id": "_:bartcaron" },
-      "schema:endDate": "2016-05-30"
+    "@type": "lbld:Decision",
+    "lbld:type": "Gemeenteraad",
+    "lbld:legalBackground": [{
+      "@id": "http://codex.vlaanderen.be/Zoeken/Document.aspx?DID=1013949&param=inhoud&AID=1061828"
+    }, {
+      "@id": "http://codex.vlaanderen.be/Zoeken/Document.aspx?DID=1013949&param=inhoud&AID=1061832"
+    }, {
+      "@id": "http://codex.vlaanderen.be/Zoeken/Document.aspx?DID=1013949&param=inhoud&AID=1061833"
+    }, {
+      "@id": "http://codex.vlaanderen.be/Zoeken/Document.aspx?DID=1013949&param=inhoud&AID=1061836"
+    }, {
+      "@id": "http://codex.vlaanderen.be/Zoeken/Document.aspx?DID=1013949&param=inhoud&AID=1061837"
+    }, {
+      "@id": "current:legalBackground-5",
+      "@type": "lbld:Article",
+      "dcterms:title": "Gelet op Artikel 8-14 van het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011",
+      "dcterms:description": "Om gemeenteraadskiezer te zijn, moet men de leeftijd van achttien jaar hebben bereikt, in de bevolkingsregisters van de gemeente ingeschreven zijn en zich niet bevinden in één van de gevallen van uitsluiting of schorsing."
+    }, {
+      "@id": "current:legalBackground-6",
+      "@type": "lbld:Article",
+      "dcterms:title": "Gelet op Artikel 58 van het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011",
+      "dcterms:description": "Om tot gemeenteraadslid verkozen te kunnen worden en blijven, moet men kiezer zijn en moet men de kiesvoorwaarden behouden en mag men zich niet in een geval van schorsing of uitsluiting bevinden. Dit artikel omschrijft verder ook de situaties waarin personen niet verkiesbaar zijn als gemeenteraadslid."
+    }, {
+      "@id": "current:legalBackground-7",
+      "@type": "lbld:Article",
+      "dcterms:title": "Gelet op Artikel 169, §2, 5° van het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011",
+      "dcterms:description": "De niet-verkozen kandidaten worden eerste, tweede, derde enzovoort opvolger verklaard in afnemende grootte van het aantal stemmen dat zij hebben bekomen, na een nieuwe overdracht van de lijststemmen, te beginnen bij de eerste niet-effectief verkozen kandidaat."
+    }, {
+      "@id": "current:legalBackground-8",
+      "@type": "lbld:Article",
+      "dcterms:title": "Gelet op Omzendbrief BB-2012/2 van 19 oktober 2012 – Start van de lokale en provinciale bestuursperiode",
+      "dcterms:description": "Deze omzendbrief geeft o.a. toelichting bij het onderzoek van de geloofsbrieven."
+    }],
+    "schema:author": {
+      "@type": "schema:Person",
+      "schema:name": "Bob"
     },
-    "mandaat:init": {
-      "@type": "mandaat:Mandaat",
-      "mandaat:position": "eerste schepen",
-      "schema:person": { "@id": "_:mattias" },
-      "schema:endDate": "2018-02-27"
+    "lbld:article": [{
+      "@id": "current:article-1",
+      "@type": "lbld:Article",
+      "dcterms:title": "Artikel undefined van het Gemeenteraadsbesluit van 2016-05-25",
+      "dcterms:description": "De raad neemt kennis van het ontslag van raadslid Veronique Volders."
+    }, {
+      "@id": "current:article-2",
+      "@type": "lbld:Article",
+      "dcterms:title": "Artikel undefined van het Gemeenteraadsbesluit van 2016-05-25",
+      "dcterms:description": "De raad keurt de geloofsbrieven van Geert Van Campenhout goed."
+    }, {
+      "@id": "current:article-3",
+      "@type": "lbld:Article",
+      "dcterms:title": "Artikel undefined van het Gemeenteraadsbesluit van 2016-05-25",
+      "dcterms:description": "De raad neemt kennis van de eedaflegging van Geert Van Campenhout in handen van de voorzitter van de gemeenteraad."
+    }],
+    "dcterms:title": "Gemeenteraadsbesluit van 2016-05-25 betreffende de kennisname van het ontslag van raadslid Veronique Volders en de installatie van opvolger Geert Van Campenhout",
+    "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "dcterms": "http://purl.org/dc/terms/",
+      "mandaat": "http://mandates.data.vlaanderen.be/ns#",
+      "lbld": "http://decisions.data.vlaanderen.be/ns#",
+      "current": "http://lblod.pieter.pm/decisions/2016-05-31T155729536Z.html#"
     },
-    "lbld:beslotenIn": { "@id": "_:8500/2014_GR_00163" }
-  }, {
-    "type": "lbld:Orgaan",
-    "@id": "_:orgaan-gemeenteraad-kortrijk",
-    "text": "Gemeenteraad Kortrijk",
-    "lbld:type": { "@id": "_:orgaan-gemeenteraad" }
-  }, {
-    "type": "lbld:Orgaan",
-    "text": "Gemeenteraad Scheveninge",
-    "lbld:type": { "@id": "_:orgaan-gemeenteraad" }
-  }, {
-    "type": "lbld:Orgaan",
-    "text": "Gemeenteraad Affligem",
-    "lbld:type": { "@id": "_:orgaan-gemeenteraad" }
-  }, {
-    "type": "lbld:Orgaan",
-    "text": "Gemeenteraad Roeselare",
-    "lbld:type": { "@id": "_:orgaan-gemeenteraad" }
-  }, {
-    "type": "lbld:Orgaan",
-    "text": "Voorbeeld Schepencollege",
-    "lbld:type": { "@id": "_:orgaan-schepencollege" }
-  }, {
-    "type": "lbld:Orgaan",
-    "text": "Voorbeeld Districtsraad",
-    "lbld:type": { "@id": "_:orgaan-districtsraad" }
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:pieter",
-    "schema:name": "Pieter Colpaert"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:katrien",
-    "schema:name": "Katrien De Smet"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:peter",
-    "schema:name": "Peter Mechant"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:heidi",
-    "schema:name": "Heidi Godderis"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:raf",
-    "schema:name": "Raf Buyle"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:liesbeth",
-    "schema:name": "Liesbeth De Clercq"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:geert",
-    "schema:name": "Geert Van Campenhout"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:carolien",
-    "schema:name": "Carolien Willen"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:katie",
-    "schema:name": "Katie Heyse"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:thomas",
-    "schema:name": "Thomas Ghysels"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:joep",
-    "schema:name": "Joep Luijten"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:veronique",
-    "schema:name": "Veronique Volders"
-  }, {
-    "@type": "schema:Person",
-    "@id": "_:mathias",
-    "schema:name": "Mathias Van Compernolle"
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:peter" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:pieter" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:katie" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    },
-    "schema:endDate": {
-      "@type": "xsd:date",
-      "@value": "2016-06-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:raf" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:carolien" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@id": "_:m1",
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:mathias" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:veronique" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:joep" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
-  }, {
-    "@type": "mandaat:Mandaat",
-    "mandaat:position": "gemeenteraadslid",
-    "mandaat:person": { "@id": "_:thomas" },
-    "schema:startDate": {
-      "@type": "xsd:date",
-      "@value": "2012-11-15"
-    }
+    "@id": "http://lblod.pieter.pm/decisions/2016-05-31T155729536Z.html#decision",
+    "lbld:changes": [{
+      "@type": "mandaat:Mandate",
+      "mandaat:mandateType": "gemeenteraadslid",
+      "mandaat:person": {
+        "@id": "_:veronique"
+      },
+      "id": "_:57",
+      "type": "mandaat:Mandate",
+      "name": "Veronique Volders",
+      "schema:endDate": {
+        "@type": "xsd:date",
+        "@value": "2016-05-31"
+      }
+    }],
+    "lbld:creates": [{
+      "@type": "mandaat:Mandate",
+      "mandaat:mandateType": "gemeenteraadslid",
+      "mandaat:person": {
+        "@type": "schema:Person",
+        "id": "_:geert",
+        "schema:name": "Geert Van Campenhout",
+        "text": "Geert Van Campenhout",
+        "type": "schema:Person",
+        "name": "Geert Van Campenhout"
+      },
+      "schema:startDate": {
+        "@type": "xsd:date",
+        "@value": "2016-05-25"
+      }
+    }]
   }]
 }

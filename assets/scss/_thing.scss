@@ -46,3 +46,13 @@
 		opacity: 1;
 	}
 }
+.thing-pre {
+	font-size: 14px;
+	white-space: pre-wrap;
+}
+.clickable {
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+}

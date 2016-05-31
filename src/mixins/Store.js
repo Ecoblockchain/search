@@ -72,9 +72,9 @@ export default {
   },
   methods: {
     load (url) {
-      this.$http.get(url).then(function ({data}) {
+      return this.$http.get(url).then(function ({data}) {
         if (!data || !data['@graph']) {
-          return console.warn('This resource is not a graph', url)
+          throw 'This resource is not a graph'
         }
 
         // Generate missing ids
@@ -96,8 +96,9 @@ export default {
     }
   },
   ready () {
-    this.load('./assets/example.json')
     this.load('./assets/gemeentedecreet.json')
-    this.load('http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld')
+    this.load('http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld').catch(function () {
+      this.load('./assets/example.json')
+    })
   }
 }

@@ -21,7 +21,7 @@ export default {
       switch(this.thing['@type']) {
         case 'lbld:Decision': return 'Decision'
         case 'schema:Person': return 'Persoon'
-        case 'lbld:Zitting': return 'Thing'
+        case 'schema:Event': return 'Thing'
         case 'lbld:Fractie': return 'Fractie'
         case 'mandaat:Mandate': return 'Mandaat'
         case 'lbld:Mandaat': return 'Mandaat'
