@@ -13,7 +13,6 @@ export default {
 	},
 	methods: {
 		a (ref) {
-			ref &&console.log( this.$parent.$parent.lookup)
 			return (ref && ref['@id'] && this.$parent.$parent.lookup[ref['@id']]) || {'dcterms:title':'nope'}
 		}
 	}

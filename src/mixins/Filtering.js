@@ -3,7 +3,7 @@ export default {
 		return {
 			filterState: window.filterState || {
 				area: null,
-				type: null,
+				type: 'lbld:Decision',
 				temporal: null,
 				bbc: null
 			}

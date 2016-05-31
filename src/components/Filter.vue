@@ -1,7 +1,6 @@
 <template>
   <div class="filter">
     <div class="facet query">
-      <h4></h4>
       <input type="text" v-model="term" class="inp inp-query" placeholder="Zoeken naar besluiten...">
     </div>
     <div class="facet daterange" v-if="show.daterange">

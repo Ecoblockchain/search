@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Besluit from './type/Besluit.vue'
+import Decision from './type/Decision.vue'
 import Fractie from './type/Fractie.vue'
 import Legislatuur from './type/Legislatuur.vue'
 import Mandaat from './type/Mandaat.vue'
@@ -19,7 +19,7 @@ export default {
   computed: {
     type () {
       switch(this.thing['@type']) {
-        case 'lbld:Besluit': return 'Besluit'
+        case 'lbld:Decision': return 'Decision'
         case 'schema:Person': return 'Persoon'
         case 'lbld:Zitting': return 'Thing'
         case 'lbld:Fractie': return 'Fractie'
@@ -30,7 +30,7 @@ export default {
     }
   },
   components: {
-    Besluit,
+    Decision,
     Fractie,
     Legislatuur,
     Mandaat,
