@@ -10,11 +10,18 @@
 	p:last-child {
 		margin-bottom: 0;
 	}
+
+	a[href^="//"]:after,
+	a[href^="http://"]:after, 
+	a[href^="https://"]:after { content: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png);
+	  margin: 0 0 0 5px;
+	}
 }
 .thing-name {
 	margin: 0;
 	line-height: 1.2em;
 	font-size: 1.25em;
+	display: inline;
 }
 .thing-type {
 	margin: 0;

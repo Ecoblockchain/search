@@ -1,7 +1,8 @@
 <template>
 	<article>
-		<header @click="show.more=!show.more" class="clickable">
-			<h1 class="thing-name">{{name}}</h1>
+		<header >
+			<h1 class="thing-name clickable" @click="show.more=!show.more">{{name}}</h1>
+			<a :href="thing['@id']" target="_blank" @click.stop></a>
 		</header>
 		<main v-if="show.more">
 			<p class="thing-description" v-if="description">{{description}}</p>
@@ -16,7 +17,7 @@
 				<div v-if="show.sub==1" v-for="article in thing['lbld:legalBackground']">
 					<p>
 						<span @click="showArt(article)" class="clickable">{{validRef(article) && 'Gelet op'}} {{art(article)['dcterms:title']}}</span>
-						<a v-if="validRef(article)" :href="article['@id']" target="_blank">online</a>
+						<a v-if="validRef(article)" :href="article['@id']" target="_blank"></a>
 					</p>
 					<p v-if="show.art==article" class="thing-pre" v-text="art(article)['dcterms:description']"></p>
 				</div>
