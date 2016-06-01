@@ -34,18 +34,19 @@ var facets = [{
 }]
 
 var context = {
+  "dcterms": "http://purl.org/dc/terms/",
+  "editor": "http://lblod.github.io/editor/assets/editor.json#",
+  "people": "http://lblod.github.io/editor/assets/people.json#",
+  "foaf": "http://xmlns.com/foaf/0.1/",
   "hydra": "http://www.w3.org/ns/hydra/core#",
+  "lbld": "http://decisions.data.vlaanderen.be/ns#",
+  "mandaat": "http://mandates.data.vlaanderen.be/ns#",
   "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-  "foaf": "http://xmlns.com/foaf/0.1/",
-  "void": "http://rdfs.org/ns/void#",
-  "xsd": "http://www.w3.org/2001/XMLSchema#",
-  "skos": "http://www.w3.org/2004/02/skos/core#",
-  "xs": "http://www.w3.org/2001/XMLSchema#",
   "schema": "http://schema.org/",
-  "dcterms": "http://purl.org/dc/terms/",
-  lbld: 'http://decisions.data.vlaanderen.be/ns#',
-  mandaat: 'http://mandates.data.vlaanderen.be/ns#'
+  "skos": "http://www.w3.org/2004/02/skos/core#",
+  "void": "http://rdfs.org/ns/void#",
+  "xsd": "http://www.w3.org/2001/XMLSchema#"
 }
 
 // Add stuff to facets
@@ -97,7 +98,7 @@ export default {
   },
   ready () {
     this.load('./assets/gemeentedecreet.json')
-    this.load('http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld').catch(function () {
+    this.load('http://linkeddatatestagiv.cloudapp.net/poc/decisions.jsonld?limit=100000').catch(function () {
       this.load('./assets/example.json')
     })
   }
