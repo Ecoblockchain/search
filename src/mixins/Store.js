@@ -66,11 +66,6 @@ export default {
       lookup: lookup
     }
   },
-  computed: {
-    features () {
-      return this.results.filter(r => r['dcterms:spatial'])
-    }
-  },
   methods: {
     load (url) {
       return this.$http.get(url).then(function ({data}) {

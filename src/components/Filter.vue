@@ -36,6 +36,11 @@ export default {
       }
     }
   },
+  computed: {
+    features () {
+      return this.$parent.results.filter(r => r['dcterms:spatial'])
+    }
+  },
   methods: {
     clearArea () {
       this.state.area = null
@@ -91,19 +96,41 @@ export default {
       L.Util.requestAnimFrame(map.invalidateSize, map, false, map._container);
       setTimeout(() => map.fitBounds(extentLayer.getBounds()), 300)
     });
+  },
+  watch: {
+    features (features) {
+      if (!map || !features) {
+        return
+      }
+      if (markers) {
+        map.removeLayer(markers);
+      }
 
-    markers = new L.FeatureGroup();
-    for (var i = 0; i < this.$parent.features.length; i++) {
-      var a = this.$parent.features[i];
-      var geo = a['dcterms:spatial']
-      var circle = new L.CircleMarker([geo.lat, geo.lng], 10, {
-          color: 'blue',
-          fillColor: '#bbf',
-          fillOpacity: 0.5
-      }).addTo(markers);
+      markers = new L.FeatureGroup();
+      for (var i = 0; i < features.length; i++) {
+        var a = features[i];
+        var geo = typeof a['dcterms:spatial'] === 'object' ? a['dcterms:spatial']['@value'] : a['dcterms:spatial']
+        console.log('geo', geo)
+        if (geo.indexOf('POLYGON') === -1) {
+          var circle = new L.CircleMarker([geo.lat, geo.lng], 10, {
+              color: 'blue',
+              fillColor: '#bbf',
+              fillOpacity: 0.5
+          }).addTo(markers);
+        } else {
+          let arr = geo.split('(')[1].split(',').map(c => parseFloat(c))
+                    var bounds = [[arr[1], arr[0]], [arr[5], arr[4]]];
+          var circle = new L.CircleMarker([(arr[1]+arr[5])/2, (arr[0]+arr[4])/2], 10, {
+              color: '#099',
+              fillColor: '#099',
+              fillOpacity: 0.3
+          }).addTo(markers);
+          L.rectangle(bounds, {color: '#099', weight: 1}).addTo(markers);
+        }
+      }
+
+      map.addLayer(markers);
     }
-
-    map.addLayer(markers);
   },
   components: {
     Facet
