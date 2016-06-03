@@ -110,7 +110,6 @@ export default {
       for (var i = 0; i < features.length; i++) {
         var a = features[i];
         var geo = typeof a['dcterms:spatial'] === 'object' ? a['dcterms:spatial']['@value'] : a['dcterms:spatial']
-        console.log('geo', geo)
         if (geo.indexOf('POLYGON') === -1) {
           var circle = new L.CircleMarker([geo.lat, geo.lng], 10, {
               color: 'blue',

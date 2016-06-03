@@ -26,6 +26,10 @@ import Filtering from './mixins/Filtering.js'
 import Store from './mixins/Store.js'
 
 function toBounds(bbox) {
+  if (bbox && bbox['@value']) {
+    let arr = bbox['@value'].split('(')[1].split(',').map(c => parseFloat(c))
+    return [arr[0], arr[1], arr[4], arr[5]]
+  }
   return typeof bbox === 'object' ? [bbox.lng || bbox.lon, bbox.lat, bbox.lng || bbox.lon, bbox.lat] : bbox.split(',').map(parseFloat)
 }
 function withinBounds(bbox, area) {
