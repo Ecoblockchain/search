@@ -3,6 +3,7 @@
 		<header >
 			<h1 class="thing-name clickable" @click="show.more=!show.more">{{name}}</h1>
 			<a :href="thing['@id']" target="_blank" @click.stop></a>
+			<div style="font-size:14px;margin-top:5px;">{{orgaan}}</div>
 		</header>
 		<main v-if="show.more">
 			<p class="thing-description" v-if="description">{{description}}</p>
@@ -44,6 +45,27 @@ export default {
 		}
 	},
 	computed: {
+		orgaan () {
+			if (!this.thing || !this.thing['schema:event']) {
+				return
+			}
+			var zit = this.$parent.$parent.lookup[this.thing['schema:event']['@id']]
+			if (!zit || !zit['lbld:organization']) {
+				return
+			}
+			// Missing in editor export
+			if (zit['lbld:organization']['@id'] === 'http://vlavirgem.pieter.pm/#gemeenteraad') {
+				return 'Gemeenteraad Vlavirgem'
+			}
+			if (zit['lbld:organization']['@id'] === 'editor:orgaan-gemeenteraad-vlagem') {
+				return 'Gemeenteraad Vlagem'
+			}
+			if (zit['lbld:organization']['@id'] === 'editor:orgaan-gemeenteraad-virgem') {
+				return 'Gemeenteraad Virgem'
+			}
+			var org = this.$parent.$parent.lookup[zit['lbld:organization']['@id']]
+			return org && org['schema:name']
+		}
 	},
 	methods: {
 		showSub (s) {
