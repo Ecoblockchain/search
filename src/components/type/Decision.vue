@@ -6,11 +6,8 @@
 		</header>
 		<main v-if="show.more">
 			<p class="thing-description" v-if="description">{{description}}</p>
-			<div v-if="thing['dcterms:temporal']">
-			 temporal {{thing['dcterms:temporal']}}
-			</div>
-			<div v-if="thing['dcterms:spatial']">
-			 spatial {{thing['dcterms:spatial']}}
+			<div v-if="thing['dcterms:spatial']" style="font-size:14px;margin-top:5px;">
+				Toepassingsgebied zie kaart
 			</div>
 			<div v-if="thing['lbld:legalBackground']">
 				<h2 @click="showSub(1)" class="clickable">Juridische gronden ({{thing['lbld:legalBackground'].length}})</h2>

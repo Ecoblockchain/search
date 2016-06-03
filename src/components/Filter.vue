@@ -121,11 +121,11 @@ export default {
           let arr = geo.split('(')[1].split(',').map(c => parseFloat(c))
                     var bounds = [[arr[1], arr[0]], [arr[5], arr[4]]];
           var circle = new L.CircleMarker([(arr[1]+arr[5])/2, (arr[0]+arr[4])/2], 10, {
-              color: '#099',
-              fillColor: '#099',
+              color: 'blue',
+              fillColor: 'blue',
               fillOpacity: 0.3
           }).addTo(markers);
-          L.rectangle(bounds, {color: '#099', weight: 1}).addTo(markers);
+          L.rectangle(bounds, {color: 'blue', weight: 1}).addTo(markers);
         }
       }
 
