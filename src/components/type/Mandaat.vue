@@ -16,7 +16,8 @@ export default {
 			if (!this.thing || !this.thing['schema:startDate']) {
 				return
 			}
-			return 'vanaf ' + this.thing['schema:startDate']['@value']
+			var d = (this.thing['schema:startDate']['@value'] || this.$parent.$parent.lookup[this.thing['schema:startDate']['@id']]['@value'])
+			return d ? 'vanaf ' + d : null
 		},
 		end () {
 			if (!this.thing || !this.thing['schema:endDate']) {

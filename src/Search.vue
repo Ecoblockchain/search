@@ -47,6 +47,7 @@ export default {
   },
   computed: {
     filtered () {
+      var self = this
       var term = this.term.toLowerCase()
       var state = this.filterState;
       return this.results
@@ -63,7 +64,14 @@ export default {
       })
       // Search term filter
       .filter(function(item) {
-        var value = item['schema:name'] || item['dcterms:title'] || item['rdfs:label']
+        var value = item.textual
+        if (!value) {
+          value = item['schema:name'] || item['dcterms:title'] || item['rdfs:label']
+          if (!value && item['mandaat:person']) {
+            value = self.lookup[item['mandaat:person']['@id']]['schema:name']
+          }
+          item.textual = value
+        }
         if (!term) return true
         return (value || false) && value.toLowerCase().indexOf(term) !== -1
       })

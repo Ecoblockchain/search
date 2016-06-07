@@ -3,6 +3,11 @@
     <div class="facet query">
       <input type="text" v-model="term" class="inp inp-query" placeholder="Zoeken naar besluiten...">
     </div>
+    <div class="facet">
+      <label>
+        <input type="checkbox" v-model="mandateOnly"> Mandaten
+      </label>
+    </div>
     <div class="facet daterange" v-if="show.daterange">
       <h4>Tussen deze datums</h4>
       <input type="date" class="inp inp-daterange">
@@ -39,6 +44,14 @@ export default {
   computed: {
     features () {
       return this.$parent.results.filter(r => r['dcterms:spatial'])
+    },
+    mandateOnly: {
+      get () {
+        return this.state.type !== 'lbld:Decision'
+      },
+      set (v) {
+        this.state.type = v ? 'mandaat:Mandate' : 'lbld:Decision'
+      }
     }
   },
   methods: {
