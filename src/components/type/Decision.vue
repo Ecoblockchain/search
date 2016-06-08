@@ -11,7 +11,7 @@
 				Toepassingsgebied zie kaart
 			</div>
 			<div v-if="thing['lbld:legalBackground']">
-				<h2 @click="showSub(1)" class="clickable">Juridische gronden ({{thing['lbld:legalBackground'].length}})</h2>
+				<h2 @click="showSub(1)" class="clickable">Juridische gronden ({{thing['lbld:legalBackground'].length || 0}})</h2>
 				<div v-if="show.sub==1" v-for="article in thing['lbld:legalBackground']">
 					<p>
 						<span @click="showArt(article)" class="clickable">{{validRef(article) && 'Gelet op'}} {{art(article)['dcterms:title']}}</span>
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div v-if="thing['lbld:article']">
-				<h2 @click="showSub(2)" class="clickable">Besluit ({{thing['lbld:article'].length}} artikels)</h2>
+				<h2 @click="showSub(2)" class="clickable">Besluit ({{thing['lbld:article'].length || 0}} artikels)</h2>
 				<div v-if="show.sub==2" v-for="article in thing['lbld:article']">
 					<p @click="showArt(article)">{{art(article)['dcterms:title']}}</p>
 					<p v-if="show.art==article" class="thing-pre" v-text="art(article)['dcterms:description']"></p>
@@ -75,10 +75,13 @@ export default {
 			this.show.art = this.show.art === a ? 0 : a
 		},
 		validRef (ref) {
+			if (!ref || !ref['@id'] || ref['@id'].startsWith('http://lblod.pieter.pm/decisions/')) {
+				return
+			}
 			return ref && ref['@id'] && this.$parent.$parent.lookup[ref['@id']]
 		},
 		art (ref) {
-			return this.validRef(ref) || ref
+			return ref && ref['@id'] && this.$parent.$parent.lookup[ref['@id']] || ref
 		},
 		check (prop) {
 			return prop[0] !== '@' && prop !== 'schema:name' && prop !== 'schema:description' && prop !== 'dcterms:title' && prop !== 'lbld:creates' && prop !== 'lbld:gelet'

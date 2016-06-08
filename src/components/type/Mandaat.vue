@@ -2,7 +2,7 @@
 	<article>
 		<header>
 			<h1 class="thing-name">{{a(thing['mandaat:person'])['schema:name']}}</h1>
-			<p class="thing-type">{{thing['mandaat:mandateType']}} {{start}} {{end}}</p>
+			<p class="thing-type">{{org}}: {{thing['mandaat:mandateType']}} {{start}} {{end}}</p>
 		</header>
 	</article>
 </template>
@@ -24,6 +24,10 @@ export default {
 				return
 			}
 			return 'tot ' + this.thing['schema:endDate']['@value']
+		},
+		org () {
+			let org = this.a(this.thing['lbld:organization'])
+			return org && org['@id'] ? org['dcterms:title'] || 'Onbekende gemeenteraad' : 'Gemeenteraad Vlavirgem'
 		}
 	},
 	methods: {
