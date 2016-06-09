@@ -26,8 +26,16 @@ export default {
 			return 'tot ' + this.thing['schema:endDate']['@value']
 		},
 		org () {
-			let org = this.a(this.thing['lbld:organization'])
-			return org && org['@id'] ? org['dcterms:title'] || 'Onbekende gemeenteraad' : 'Gemeenteraad Vlavirgem'
+			if (!this.thing['lbld:organization']) {
+				return 'Gemeenteraad Vlavirgem'
+			}
+			if (this.thing['lbld:organization']['@id'] == 'editor:orgaan-gemeenteraad-virgem') {
+				return 'Gemeenteraad Virgem'
+			}
+			if (this.thing['lbld:organization']['@id'] == 'editor:orgaan-gemeenteraad-vlagem') {
+				return 'Gemeenteraad Vlagem'
+			}
+			return 'Gemeenteraad Vlavirgem'
 		}
 	},
 	methods: {
